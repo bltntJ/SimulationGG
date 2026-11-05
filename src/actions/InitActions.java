@@ -24,7 +24,7 @@ public class InitActions {
             Coordinates coordinates = new Coordinates(randomRow, randomColumn);
 
             if (!simulationMap.getEntities().containsKey(coordinates) && !simulationMap.getStaticEntities().containsKey(coordinates)) {
-                simulationMap.setEntity(coordinates, new Herbivore(coordinates));
+                simulationMap.setEntity(coordinates, new Herbivore(coordinates, simulationMap));
                 i++;
             }
         }

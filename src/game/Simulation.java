@@ -22,40 +22,38 @@ public class Simulation {
 
     private void nextTurn() throws InterruptedException {
         callMovePredators();
-        if (moveCounter.getCount() % 15 == 0) {
-            isRunning = moveCounter.askToContinue();
-        }
 
-        if (turnActions.stopGameIfZeroHerbivores()) {
-            System.out.println("All herbivores died");
-            isRunning = false;
-            return;
-        }
+        if (moveCounter.getCount() % 15 == 0) isRunning = moveCounter.askToContinue();
+
+        isRunning = !turnActions.stopGameIfZeroHerbivores();
+        if (isRunning) return;
 
         callMoveHerbivores();
+        turnActions.generateGrass();
+
+        isRunning = !turnActions.stopGameIfZeroGrass();
+        if (isRunning) return;
+
         if (moveCounter.getCount() % 15 == 0) {
             isRunning = moveCounter.askToContinue();
         }
     }
 
     public void callMoveHerbivores() throws InterruptedException {
-        Thread.sleep(2000);
-
         turnActions.moveHerbivores();
         turnActions.removeEntityIfHPZero();
-        mapRenderer.render();
-
-        statistics.printStatistics();
-        moveCounter.increaseCount();
+        printData();
+        Thread.sleep(2000);
     }
 
     public void callMovePredators() throws InterruptedException {
-        Thread.sleep(2000);
-
         turnActions.movePredators();
-        turnActions.removeEntityIfHPZero();
-        mapRenderer.render();
+        printData();
+        Thread.sleep(2000);
+    }
 
+    public void printData() {
+        mapRenderer.render();
         statistics.printStatistics();
         moveCounter.increaseCount();
     }

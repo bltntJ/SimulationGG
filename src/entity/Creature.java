@@ -1,7 +1,6 @@
 package entity;
 
 import game.Coordinates;
-import actions.CoordinatesShift;
 import game.SimulationMap;
 
 import java.util.*;
@@ -16,12 +15,6 @@ public abstract class Creature extends Entity {
         this.speed = speed;
     }
 
-    public void changeCoordinates(Coordinates previousCoordinates, Coordinates nextCoordinate, SimulationMap simulationMap) {
-        setCoordinates(nextCoordinate);
-        simulationMap.setEntity(nextCoordinate, this);
-        simulationMap.getEntities().remove(previousCoordinates);
-    }
-
     public abstract void makeMove(SimulationMap simulationMap);
 
     public Integer getHP() {
@@ -32,13 +25,20 @@ public abstract class Creature extends Entity {
         this.HP = HP;
     }
 
-    protected Set<CoordinatesShift> getEntityMoves() {
-        Set<CoordinatesShift> allPossibleMoves = new HashSet<>();
+    public List<Coordinates> getEntityMoves() {
+        List<Coordinates> allPossibleMoves = new ArrayList<>();
         for (int i = -speed; i <= speed; i++) {
             for (int j = -speed; j <= speed; j++) {
-                allPossibleMoves.add(new CoordinatesShift(i, j));
+                allPossibleMoves.add(new Coordinates(i, j));
             }
         }
+        allPossibleMoves.remove(new Coordinates(0, 0));
         return allPossibleMoves;
+    }
+
+    public void changeCoordinates(Coordinates previousCoordinates, Coordinates nextCoordinate, SimulationMap simulationMap) {
+        setCoordinates(nextCoordinate);
+        simulationMap.setEntity(nextCoordinate, this);
+        simulationMap.getEntities().remove(previousCoordinates);
     }
 }

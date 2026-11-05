@@ -1,6 +1,5 @@
 package entity;
 
-import actions.CoordinatesShift;
 import config.SimulationConfig;
 import game.Coordinates;
 import game.SimulationMap;
@@ -32,7 +31,9 @@ public class Predator extends Creature {
     }
 
     public void attackHerbivore(Herbivore herbivore, Coordinates coordinates) {
+        System.out.println("\n" + "-".repeat(20));
         System.out.printf("The predator at %d %d attacked the herbivore\n", coordinates.row() + 1, coordinates.column() + 1);
+        System.out.println("-".repeat(20) + "\n");
         setHP(getHP() + 3);
         herbivore.decreaseHP(attackPower);
     }

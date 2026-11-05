@@ -20,16 +20,17 @@ public class MoveCounter {
         return count;
     }
 
-    public boolean askToContinue() {
+    public boolean askToContinue() throws InterruptedException {
         System.out.printf("You have done %d moves\nDo you want to continue?\n1 - yes | 2 - no\n", count);
         while (true) {
             if (scanner.hasNextInt()) {
                 int input = scanner.nextInt();
                 if (input == 1) {
-                    System.out.println("Continuing...");
+                    System.out.println("Continuing...\n\n");
+                    Thread.sleep(1000);
                     return true;
                 } else if (input == 2) {
-                    System.out.println("Exiting...");
+                    System.out.println("Exiting...\n");
                     return false;
                 }
             } else {

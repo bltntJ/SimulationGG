@@ -1,6 +1,5 @@
 package utils;
 
-import actions.CoordinatesShift;
 import entity.Creature;
 import entity.Entity;
 import entity.Herbivore;
@@ -11,12 +10,11 @@ import game.SimulationMap;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 public class CellsGetter {
-    public List<Coordinates> getAvailableMoveCells(SimulationMap simulationMap, Set<CoordinatesShift> entityMoves, Coordinates coordinates) {
+    public List<Coordinates> getAvailableMoveCells(SimulationMap simulationMap, List<Coordinates> entityMoves, Coordinates coordinates) {
         List<Coordinates> result = new ArrayList<>();
-        for (CoordinatesShift shift: entityMoves) {
+        for (Coordinates shift: entityMoves) {
             if (coordinates.canShift(shift, simulationMap.getHeight(), simulationMap.getWidth())) {
                 addCellInResult(result, simulationMap, coordinates, shift);
             }
@@ -24,7 +22,7 @@ public class CellsGetter {
         return result;
     }
 
-    private void addCellInResult(List<Coordinates> result, SimulationMap simulationMap, Coordinates coordinates, CoordinatesShift shift) {
+    private void addCellInResult(List<Coordinates> result, SimulationMap simulationMap, Coordinates coordinates, Coordinates shift) {
         Coordinates newCoordinates = coordinates.shift(shift);
         HashMap<Coordinates, Creature> creatureMap = simulationMap.getEntities();
         HashMap<Coordinates, Entity> entityMap = simulationMap.getStaticEntities();
