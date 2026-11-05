@@ -27,7 +27,6 @@ public class MoveCounter {
                 int input = scanner.nextInt();
                 if (input == 1) {
                     System.out.println("Continuing...\n\n");
-                    Thread.sleep(1000);
                     return true;
                 } else if (input == 2) {
                     System.out.println("Exiting...\n");

@@ -1,6 +1,5 @@
 package actions;
 
-import config.SimulationConfig;
 import entity.Creature;
 import entity.Grass;
 import entity.Herbivore;

@@ -42,7 +42,7 @@ public class GrassCoordinatesFinder {
             if (distance < shortestDistance) {
                 shortestDistance = distance;
                 closestGrass = grass;
-            };
+            }
         }
 
         return closestGrass;
