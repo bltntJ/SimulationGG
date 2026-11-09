@@ -1,7 +1,7 @@
 package utils;
 
-import entity.Creature;
-import entity.Entity;
+import elements.Creature;
+import elements.Entity;
 import game.Coordinates;
 
 import java.util.HashMap;

@@ -1,8 +1,8 @@
 package config;
 
-public class SimulationConfig {
-    public static final int MAP_MIN_HEIGHT = 10;
-    public static final int MAP_MIN_WIDTH = 10;
+public class Config {
+    public static final int MAP_MIN_HEIGHT = 15;
+    public static final int MAP_MIN_WIDTH = 15;
 
     public static final int HERBIVORE_HEALTH = 10;
     public static final int PREDATOR_HEALTH = 10;
@@ -13,13 +13,9 @@ public class SimulationConfig {
     public static final int PREDATOR_ATTACK = 5;
 
     public static final int HERBIVORE_START_COUNT = 7;
-    public static final int HERBIVORE_MAX_COUNT = 10;
-
     public static final int PREDATOR_START_COUNT = 3;
-    public static final int PREDATOR_MAX_COUNT = 5;
 
     public static final int GRASS_START_COUNT = 5;
-    public static final int GRASS_MAX_COUNT = 7;
     public static final int ROCK_START_COUNT = 10;
     public static final int TREE_START_COUNT = 10;
 
@@ -30,5 +26,5 @@ public class SimulationConfig {
     public static final String HERBIVORE = "\uD83E\uDD8C";
     public static final String PREDATOR = "\uD83D\uDC3A";
 
-    private SimulationConfig() {}
+    private Config() {}
 }

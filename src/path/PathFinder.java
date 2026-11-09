@@ -1,13 +1,14 @@
 package path;
 
-import entity.Grass;
+import ablities.MoveValidator;
+import elements.Creature;
 import game.Coordinates;
 import game.SimulationMap;
 
 import java.util.*;
 
-public class HerbivorePathFinder {
-    public static Coordinates findNextStep(Coordinates start, Coordinates target, SimulationMap simulationMap) {
+public class PathFinder implements MoveValidator {
+    public static Coordinates findNextStep(Class<? extends Creature> searcherClass, Coordinates start, Coordinates target, SimulationMap simulationMap) {
         Queue<Coordinates> queue = new LinkedList<>();
         Set<Coordinates> visited = new HashSet<>();
         Map<Coordinates, Coordinates> parentMap = new HashMap<>();
@@ -19,15 +20,15 @@ public class HerbivorePathFinder {
             currentCoordinates = queue.poll();
             if (currentCoordinates.equals(target)) break;
 
-            // SOLVE
-            List<Coordinates> currentCreatureMoves = simulationMap.getEntities().get(start).getEntityMoves();
+            Creature creature = simulationMap.getEntities().get(start);
+            List<Coordinates> currentCreatureMoves = creature.getEntityMoves(creature.getSpeed());
             for (Coordinates move : currentCreatureMoves) {
                 int shiftedRow = currentCoordinates.row() + move.row();
                 int shiftedColumn = currentCoordinates.column() + move.column();
 
                 Coordinates neighbor = new Coordinates(shiftedRow, shiftedColumn);
 
-                if (isValidMove(neighbor, simulationMap, visited)) {
+                if (MoveValidator.isValidMove(searcherClass, neighbor, simulationMap, visited)) {
                     visited.add(neighbor);
                     parentMap.put(neighbor, currentCoordinates);
                     queue.add(neighbor);
@@ -43,15 +44,5 @@ public class HerbivorePathFinder {
         }
 
         return nextStep;
-    }
-
-    private static boolean isValidMove(Coordinates neighbor, SimulationMap simulationMap, Set<Coordinates> visited) {
-        if (!visited.contains(neighbor)) {
-            boolean isInBounds = (neighbor.row() >= 0 && neighbor.row() <= simulationMap.getHeight()) && (neighbor.column() >= 0 && neighbor.column() <= simulationMap.getWidth());
-            boolean isCellAppropriate = !simulationMap.getEntities().containsKey(neighbor) && (!simulationMap.getStaticEntities().containsKey(neighbor) || simulationMap.getStaticEntities().get(neighbor) instanceof Grass);
-
-            return isInBounds && isCellAppropriate;
-        }
-        return false;
     }
 }

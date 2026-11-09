@@ -1,67 +1,75 @@
 package game;
 
-import actions.InitActions;
-import actions.TurnActions;
+import actions.InitActionsMain;
+import actions.TurnActionsMain;
+import elements.creatures.Herbivore;
+import elements.creatures.Predator;
 
 public class Simulation {
-    private final InitActions initActions;
     private final MapRenderer mapRenderer;
-    private final TurnActions turnActions;
-    private final Statistics statistics;
+    private final TurnActionsMain turnActions;
     private final MoveCounter moveCounter;
-    private boolean isRunning = true;
+    private final Thread reader;
+    private volatile boolean isRunning = true;
 
     public Simulation(SimulationMap simulationMap) {
-        initActions = new InitActions(simulationMap);
         mapRenderer = new MapRenderer(simulationMap);
-        turnActions = new TurnActions(simulationMap);
-        statistics = new Statistics(simulationMap);
+        turnActions = new TurnActionsMain(simulationMap);
         moveCounter = new MoveCounter();
-        initActions.setDefaultPositionsForObjects();
+        reader = new Thread(new InputReader());
+        new InitActionsMain(simulationMap).setDefaultPositions();
     }
 
-    private void nextTurn() throws InterruptedException {
-        callMovePredators();
-
-        if (moveCounter.getCount() % 15 == 0) isRunning = moveCounter.askToContinue();
-
-        isRunning = !turnActions.stopGameIfZeroHerbivores();
-        if (isRunning) return;
-
-        callMoveHerbivores();
-        turnActions.generateGrass();
-
-        isRunning = !turnActions.stopGameIfZeroGrass();
-        if (isRunning) return;
-
-        if (moveCounter.getCount() % 15 == 0) {
-            isRunning = moveCounter.askToContinue();
-        }
-    }
-
-    public void callMoveHerbivores() throws InterruptedException {
-        turnActions.moveHerbivores();
-        turnActions.removeEntityIfHPZero();
-        printData();
-        Thread.sleep(2000);
-    }
-
-    public void callMovePredators() throws InterruptedException {
-        turnActions.movePredators();
-        printData();
-        Thread.sleep(2000);
-    }
-
-    public void printData() {
+    private void printData() {
         mapRenderer.render();
-        statistics.printStatistics();
         moveCounter.increaseCount();
     }
 
-    public void startSimulation() throws InterruptedException {
-        initActions.startingMessage(mapRenderer);
+    private void doActions() {
+        turnActions.callCreaturesMover();
+        turnActions.callCreaturesRemover();
+    }
+
+    private void generateElements() {
+        turnActions.callCreaturesGenerator(Herbivore.class);
+        turnActions.callCreaturesGenerator(Predator.class);
+        turnActions.callGrassGenerator();
+    }
+
+    private void startingMessage(MapRenderer mapRenderer) throws InterruptedException {
+        mapRenderer.render();
+        System.out.println("To exit, enter 0");
+        int i = 3;
+        while (i > 0) {
+            System.out.println(i + "..");
+            Thread.sleep(1000);
+            i--;
+        }
+        System.out.println();
+    }
+
+    private void nextTurn() {
+        doActions();
+        printData();
+        generateElements();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void startSimulation() {
+        try {
+            startingMessage(mapRenderer);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        reader.setDaemon(true);
+        reader.start();
         while (isRunning) {
             nextTurn();
+            if (!reader.isAlive()) isRunning = false;
         }
     }
 }

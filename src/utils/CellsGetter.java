@@ -1,9 +1,9 @@
 package utils;
 
-import entity.Creature;
-import entity.Entity;
-import entity.Herbivore;
-import entity.Predator;
+import elements.Creature;
+import elements.Entity;
+import elements.creatures.Herbivore;
+import elements.creatures.Predator;
 import game.Coordinates;
 import game.SimulationMap;
 
@@ -25,7 +25,7 @@ public class CellsGetter {
     private void addCellInResult(List<Coordinates> result, SimulationMap simulationMap, Coordinates coordinates, Coordinates shift) {
         Coordinates newCoordinates = coordinates.shift(shift);
         HashMap<Coordinates, Creature> creatureMap = simulationMap.getEntities();
-        HashMap<Coordinates, Entity> entityMap = simulationMap.getStaticEntities();
+        HashMap<Coordinates, Entity> entityMap = simulationMap.getObjects();
 
         if (simulationMap.getEntities().get(coordinates) instanceof Herbivore) {
             if (CellsChecker.isCellAvailableForHerbivoreMove(newCoordinates, creatureMap, entityMap)) result.add(newCoordinates);

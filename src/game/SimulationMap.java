@@ -1,13 +1,13 @@
 package game;
 
-import entity.Creature;
-import entity.Entity;
+import elements.Creature;
+import elements.Entity;
 
 import java.util.HashMap;
 
 public class SimulationMap {
     private final HashMap<Coordinates, Creature> entities = new HashMap<>();
-    private final HashMap<Coordinates, Entity> staticEntities = new HashMap<>();
+    private final HashMap<Coordinates, Entity> objects = new HashMap<>();
     public final Integer height;
     public final Integer width;
 
@@ -21,16 +21,26 @@ public class SimulationMap {
         entities.put(coordinates, creature);
     }
 
-    public void setStaticEntity(Coordinates coordinates, Entity entity) {
+    public void setObject(Coordinates coordinates, Entity entity) {
         entity.setCoordinates(coordinates);
-        staticEntities.put(coordinates, entity);
+        objects.put(coordinates, entity);
+    }
+
+    public void removeEntity(Coordinates coordinates) {
+        entities.remove(coordinates);
+    }
+
+    public void removeObject(Coordinates coordinates) {
+        objects.remove(coordinates);
     }
 
     public HashMap<Coordinates, Creature> getEntities() {
         return entities;
     }
 
-    public HashMap<Coordinates, Entity> getStaticEntities() { return staticEntities; }
+    public HashMap<Coordinates, Entity> getObjects() {
+        return objects;
+    }
 
     public Integer getHeight() {
         return height;

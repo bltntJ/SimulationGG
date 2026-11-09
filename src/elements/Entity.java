@@ -1,4 +1,4 @@
-package entity;
+package elements;
 
 import game.Coordinates;
 
