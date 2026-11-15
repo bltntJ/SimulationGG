@@ -1,6 +1,6 @@
-package elements;
+package entities;
 
-import game.Coordinates;
+import elements.Coordinates;
 
 public abstract class Entity {
     protected Coordinates coordinates;

@@ -2,45 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98cf932f-bc93-4eae-8e84-8ee7f7d19a5d" name="Changes" comment="Added pathfinding to Herbivore + grass generator + amendments in ui">
-      <change afterPath="$PROJECT_DIR$/src/ablities/MoveValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ablities/MovesGetter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ablities/StepFinder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/InitActionsMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/RandomCellGetter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/TurnActionsMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/initactions/DefaultCreaturesPositionsSetter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/initactions/DefaultObjectsPositionsSetter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/turnactions/CreaturesGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/turnactions/CreaturesMover.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/turnactions/CreaturesRemover.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/turnactions/GrassGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/elements/Creature.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/elements/creatures/Herbivore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/elements/creatures/Predator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/InputReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/path/PathFinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/InitActions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/TurnActions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/elements/Coordinates.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/elements/MapRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/elements/SimulationMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/Creature.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/Grass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/Herbivore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/Predator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/Rock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/Tree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/InitActions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/TurnActions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/SimulationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Creature.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Grass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/objects/Grass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Herbivore.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Predator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Rock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/objects/Rock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/objects/Tree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/MapRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/MapRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/MoveCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/MoveCounter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/SimulationMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/SimulationMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Statistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/path/HerbivorePathFinder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/path/PredatorPathfinder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/CellsChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/CellsChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/CellsGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/CellsGetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/GrassCoordinatesFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/CoordinatesFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ablities/MoveValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ablities/MovesGetter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ablities/StepFinder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/InitActionsMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/RandomCellGetter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/TurnActionsMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/initactions/DefaultCreaturesPositionsSetter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/initactions/DefaultObjectsPositionsSetter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/turnactions/CreaturesGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/turnactions/CreaturesMover.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/turnactions/CreaturesRemover.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/turnactions/GrassGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/Config.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/Creature.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/creatures/Herbivore.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/creatures/Predator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/objects/Grass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/objects/Rock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/objects/Tree.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Coordinates.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/InputReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/MapRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/MoveCounter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Simulation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/SimulationMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/path/PathFinder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/CellsChecker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/CellsGetter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/CoordinatesFinder.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,25 +74,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Groovy.GrassCoordinatesFinder.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Groovy.GrassCoordinatesFinder.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "Debugger_Data_Views_Java"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -140,6 +144,10 @@
           <properties field="simulationMap" class="actions.TurnActionsMain" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/elements/Coordinates.java</url>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -147,11 +155,6 @@
         <PinnedItemInfo parentTag="game.Coordinates" memberName="row" />
       </pinned-members>
     </pin-to-top-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="cellsGetter" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
