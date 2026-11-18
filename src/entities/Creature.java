@@ -20,6 +20,7 @@ public abstract class Creature extends Entity {
 
         List<Coordinates> availableCells = getAvailableCells(simulationMap);
         if (availableCells.isEmpty()) {
+            System.out.println(123123133);
             return;
         }
 

@@ -14,6 +14,7 @@ public class MapRenderer {
         int height = simulationMap.getHeight();
         int width = simulationMap.getWidth();
 
+        System.out.println();
         for (int row = 1; row <= height; row++) {
             for (int column = 1; column <= width; column++) {
                 Coordinates coordinates = new Coordinates(row, column);
@@ -28,7 +29,6 @@ public class MapRenderer {
             }
             System.out.println();
         }
-        System.out.println();
     }
 
     private String toSprite(Entity entity) {
