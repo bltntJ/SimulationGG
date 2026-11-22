@@ -15,6 +15,15 @@ public class SimulationMap {
         this.width = width;
     }
 
+    public Map<Coordinates, Entity> getEntities() {
+        return new HashMap<>(entities);
+    }
+
+    public Entity getEntity(Coordinates coordinates) {
+        validate(coordinates);
+        return entities.get(coordinates);
+    }
+
     public void putEntity(Coordinates coordinates, Entity entity) {
         validate(coordinates);
         entity.setCoordinates(coordinates);
@@ -24,15 +33,6 @@ public class SimulationMap {
     public void removeEntity(Coordinates coordinates) {
         validate(coordinates);
         entities.remove(coordinates);
-    }
-
-    public Entity getEntity(Coordinates coordinates) {
-        validate(coordinates);
-        return entities.get(coordinates);
-    }
-
-    public Map<Coordinates, Entity> getEntities() {
-        return new HashMap<>(entities);
     }
 
     public boolean isCellEmpty(Coordinates coordinates) {

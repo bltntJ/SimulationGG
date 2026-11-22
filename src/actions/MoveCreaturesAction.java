@@ -1,17 +1,11 @@
 package actions;
 
 import elements.SimulationMap;
-import entities.Creature;
-import entities.Entity;
+import entities.*;
 
-public class TurnActions {
-    private final SimulationMap simulationMap;
-
-    public TurnActions(SimulationMap simulationMap) {
-        this.simulationMap = simulationMap;
-    }
-
-    public void move() {
+public class MoveCreaturesAction implements Action {
+    @Override
+    public void execute(SimulationMap simulationMap) {
         for (Entity entity: simulationMap.getEntities().values())  {
             if (entity instanceof Creature) {
                 ((Creature) entity).makeMove(simulationMap);

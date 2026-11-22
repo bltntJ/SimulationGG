@@ -1,69 +1,80 @@
 package elements;
 
-import actions.InitActions;
-import actions.TurnActions;
-import entities.*;
+import actions.*;
+import settings.Settings;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Simulation {
     private final SimulationMap simulationMap;
-    private final MapRenderer mapRenderer = new MapRenderer();
-    private final TurnActions turnActions;
+    private final MapRenderer mapRenderer;
+    private final MoveCounter moveCounter;
+    private final List<Action> initActions;
+    private final List<Action> turnActions;
     private volatile boolean isRunning;
-
-//    private final List<Action> initActions = List.of(new SpawnAction());
-//    private final List<Action> turnActions = List.of(new RemoveDeadEntityAction(), new MoveAction());
 
     public Simulation(SimulationMap simulationMap) {
         this.simulationMap = simulationMap;
-        InitActions initActions = new InitActions(simulationMap);
-        initActions.setDefaultEntitiesPositions(Herbivore.class, 3);
-        initActions.setDefaultEntitiesPositions(Predator.class, 3);
-        initActions.setDefaultEntitiesPositions(Grass.class, 3);
-        initActions.setDefaultEntitiesPositions(Tree.class, 3);
-        initActions.setDefaultEntitiesPositions(Rock.class, 3);
-        this.turnActions = new TurnActions(simulationMap);
-//        executeActions(initActions);
+        this.mapRenderer = new MapRenderer();
+        this.moveCounter = new MoveCounter();
+        this.initActions = new ArrayList<>();
+        this.turnActions = new ArrayList<>();
+
+        createActions();
+        executeActions(initActions);
+    }
+
+    private void createActions() {
+        initActions.add(new HerbivoreSpawnAction(Settings.HERBIVORE_START_COUNT));
+        initActions.add(new PredatorSpawnAction(Settings.PREDATOR_START_COUNT));
+        initActions.add(new GrassSpawnAction(Settings.GRASS_START_COUNT));
+        initActions.add(new TreeSpawnAction(Settings.TREE_START_COUNT));
+        initActions.add(new RockSpawnAction(Settings.ROCK_START_COUNT));
+
+        turnActions.add(new MoveCreaturesAction());
+        turnActions.add(new RemoveDeadCreatureAction());
+        turnActions.add(new AdditionalHerbivoreSpawnAction(5));
+        turnActions.add(new AdditionalPredatorSpawnAction(3));
+        turnActions.add(new AdditionalGrassSpawnAction(5));
     }
 
     public void startSimulation() {
         if (isRunning) return;
-
         isRunning = true;
         System.out.println("Started...");
-
         sleep();
         new Thread(() -> {
             while (isRunning) {
                 nextTurn();
+                sleep();
             }
         }).start();
     }
 
+    private void sleep() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void pauseSimulation() {
         if (!isRunning) return;
-
         isRunning = false;
         System.out.println("Paused...");
     }
 
     private void nextTurn() {
         mapRenderer.render(simulationMap);
-        turnActions.move();
-        sleep();
-//        executeActions(turnActions);
+        executeActions(turnActions);
+        moveCounter.printCount();
     }
 
-//    private void executeActions(List<Action> actions) {
-//        for(Action action : actions) {
-//            action.execute(simulationMap);
-//        }
-//    }
-
-    private void sleep() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+    private void executeActions(List<Action> actions) {
+        for(Action action : actions) {
+            action.execute(simulationMap);
         }
     }
 }

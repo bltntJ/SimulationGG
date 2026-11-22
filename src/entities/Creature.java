@@ -15,37 +15,9 @@ public abstract class Creature extends Entity {
         this.speed = speed;
     }
 
-    public void makeMove(SimulationMap simulationMap) {
-        Random random = new Random();
+    public abstract void makeMove(SimulationMap simulationMap);
 
-        List<Coordinates> availableCells = getAvailableCells(simulationMap);
-        if (availableCells.isEmpty()) {
-            System.out.println(123123133);
-            return;
-        }
-
-        Coordinates newCoordinates = availableCells.get(random.nextInt(availableCells.size()));
-        simulationMap.removeEntity(coordinates);
-        simulationMap.putEntity(newCoordinates, this);
-    }
-
-    public List<Coordinates> getAvailableCells(SimulationMap simulationMap) {
-        List<Coordinates> result = new ArrayList<>();
-
-        for (Coordinates shift: getEntityMoves()) {
-            if (coordinates.canShift(simulationMap, shift)) {
-                Coordinates newCoordinates = coordinates.shift(shift);
-
-                if(simulationMap.isCellEmpty(newCoordinates)) {
-                    result.add(newCoordinates);
-                }
-            }
-        }
-        return result;
-    }
-
-
-    private Set<Coordinates> getEntityMoves() {
+    public Set<Coordinates> getEntityMoves() {
         Set<Coordinates> allMoves = new HashSet<>();
         for (int i = -speed; i <= speed; i++) {
             for (int j = -speed; j <= speed; j++) {
@@ -56,4 +28,19 @@ public abstract class Creature extends Entity {
         return allMoves;
     }
 
+    public boolean isValidMove(Coordinates neighbor, SimulationMap simulationMap, Set<Coordinates> visited, Class<? extends Entity> target) {
+        boolean isNotVisited = !visited.contains(neighbor);
+        boolean isEmptyCell = !simulationMap.getEntities().containsKey(neighbor);
+        boolean isAppropriateCell = target.isInstance(simulationMap.getEntity(neighbor));
+
+        return  isNotVisited && (isEmptyCell || isAppropriateCell);
+    }
+
+    public void setHp(int hp) {
+        this.hp = Math.max(hp, 0);
+    }
+
+    public int getHp() {
+        return hp;
+    }
 }
