@@ -13,6 +13,6 @@ public class PredatorSpawnAction extends SpawnAction {
 
     @Override
     public Entity createEntity(Coordinates coordinates) {
-        return new Predator(Settings.HERBIVORE_HEALTH, Settings.HERBIVORE_SPEED, Settings.PREDATOR_ATTACK, coordinates);
+        return new Predator(Settings.PREDATOR_HEALTH, Settings.PREDATOR_SPEED, Settings.PREDATOR_ATTACK, coordinates);
     }
 }

@@ -5,7 +5,6 @@ import elements.SimulationMap;
 import pathfinding.BfsPathFinder;
 
 import java.util.List;
-import java.util.Random;
 
 public class Predator extends Creature {
     private static final Class<? extends Entity> FOOD = Herbivore.class;

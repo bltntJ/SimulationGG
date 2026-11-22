@@ -2,31 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98cf932f-bc93-4eae-8e84-8ee7f7d19a5d" name="Changes" comment="Totally from 0: added basic movement mechanics and rendering">
-      <change afterPath="$PROJECT_DIR$/src/actions/Action.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/AdditionalGrassSpawnAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/AdditionalHerbivoreSpawnAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/AdditionalPredatorSpawnAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/GrassSpawnAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/HerbivoreSpawnAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/MoveCreaturesAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/PredatorSpawnAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/RemoveDeadCreatureAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/RockSpawnAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/SpawnAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/TreeSpawnAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/elements/MoveCounter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pathfinding/BfsPathFinder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/settings/Settings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainWithThreads.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainWithThreads.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/InitActions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/TurnActions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/PredatorSpawnAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/PredatorSpawnAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/Coordinates.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/elements/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/Simulation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/elements/SimulationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/SimulationManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/elements/SimulationMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/SimulationMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Creature.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Herbivore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Herbivore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Predator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pathfinding/BfsPathFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pathfinding/BfsPathFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/Settings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

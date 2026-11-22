@@ -32,14 +32,16 @@ public class BfsPathFinder {
             }
 
             for (Coordinates move : searcher.getEntityMoves()) {
+                if (!current.canShift(simulationMap, new Coordinates(move.x(), move.y()))) {
+                    continue;
+                }
+
                 Coordinates neighbor = new Coordinates(current.x() + move.x(),current.y() + move.y());
 
-                if (isInBounds(simulationMap, neighbor)) {
-                    if (searcher.isValidMove(neighbor, simulationMap, visited, target)) {
-                        visited.add(neighbor);
-                        parentMap.put(neighbor, current);
-                        queue.add(neighbor);
-                    }
+                if (searcher.isValidMove(neighbor, simulationMap, visited, target)) {
+                    visited.add(neighbor);
+                    parentMap.put(neighbor, current);
+                    queue.add(neighbor);
                 }
             }
         }
@@ -49,10 +51,6 @@ public class BfsPathFinder {
         }
 
         return buildOrderedPath(parentMap, start, targetCoordinates);
-    }
-
-    private static boolean isInBounds(SimulationMap simulationMap, Coordinates coordinates) {
-        return coordinates.x() >= 1 && coordinates.x() <= simulationMap.getWidth() && coordinates.y() >= 1 && coordinates.y() <= simulationMap.getHeight();
     }
 
     private static List<Coordinates> buildOrderedPath(Map<Coordinates, Coordinates> parentMap, Coordinates start, Coordinates target) {

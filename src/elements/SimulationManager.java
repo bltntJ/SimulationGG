@@ -20,7 +20,6 @@ public class SimulationManager extends Thread {
 
         while (true) {
             String option = scanner.nextLine().trim();
-
             switch (option) {
                 case "1" -> simulation.pauseSimulation();
                 case "2" -> simulation.startSimulation();

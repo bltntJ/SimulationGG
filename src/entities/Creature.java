@@ -33,7 +33,7 @@ public abstract class Creature extends Entity {
         boolean isEmptyCell = !simulationMap.getEntities().containsKey(neighbor);
         boolean isAppropriateCell = target.isInstance(simulationMap.getEntity(neighbor));
 
-        return  isNotVisited && (isEmptyCell || isAppropriateCell);
+        return isNotVisited && (isEmptyCell || isAppropriateCell);
     }
 
     public void setHp(int hp) {

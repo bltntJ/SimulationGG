@@ -36,6 +36,7 @@ public class SimulationMap {
     }
 
     public boolean isCellEmpty(Coordinates coordinates) {
+        validate(coordinates);
         return !entities.containsKey(coordinates);
     }
 
